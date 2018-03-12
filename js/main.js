@@ -15,8 +15,6 @@
       lastBug = -1; //Last bug spawned
       bugArray = []; //Holds all the Bugs
       startTime = Date.now(), //Start time, to calculate total time
-      bug1 = new Image(15, 15);
-      bug1.src = 'assets/Death.png';
 
 
 animate(); //Begin animation
@@ -24,7 +22,7 @@ animate(); //Begin animation
 function bugSpawn() {
   let bugType; //Select a random bug to spawned
   if(Math.random() < 0.33) {
-    t = "bug1";
+    t = "red";
   } else if(Math.random() < 0.66) {
     t = "blue";
   } else {
@@ -65,7 +63,6 @@ function animate() {
     //Move each bug down the canvas
     for (var i = 0; i < bugArray.length; i++) {
       var object = bugArray[i];
-      var pattern = ctx.createPattern(bug1, "repeat");
       object.y += spawnRateDescent;
       ctx.beginPath();
       ctx.rect(object.x, object.y, 30, 30);
