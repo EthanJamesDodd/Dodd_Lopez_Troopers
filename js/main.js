@@ -23,17 +23,8 @@
 animate(); //Begin animation
 
 function bugSpawn() {
-  //Select a random bug to spawned
-  /*if(Math.random() < 0.33) {
-    t = sadImage;
-  } else if(Math.random() < 0.66) {
-    t = happyImage;
-  } else {
-    t = mediumFace;
-  }*/
-
   //Create the new bug
-  var object = {
+  let object = {
         // set x randomly but at least 15px off the canvas edges
         x: Math.random() * (canvas.width - 30) + 15,
         // set y to start on the line where objects are spawned
@@ -58,20 +49,13 @@ function animate() {
   //Request another animation frame
   requestAnimationFrame(animate);
 
-ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     //Move each bug down the canvas
     for (var i = 0; i < bugArray.length; i++) {
       var object = bugArray[i];
       object.y += spawnRateDescent;
-    //  ctx.drawImage(t, object.x, object.y, 30, 30);
-      if(Math.random() < 0.33) {
-        ctx.drawImage(sadImage, object.x, object.y, 30, 30);
-      } else if(Math.random() < 0.66) {
-        ctx.drawImage(happyImage, object.x, object.y, 30, 30);
-      } else {
-        ctx.drawImage(mediumFace, object.x, object.y, 30, 30);
-      }
+      ctx.drawImage(sadImage, object.x, object.y, 40, 40);
     }
 }
 
