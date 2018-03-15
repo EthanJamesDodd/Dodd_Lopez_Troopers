@@ -9,8 +9,8 @@
       clickBox = document.querySelector('#testBox');
 
   //Spawning Bugs
-  let spawnLine = 0, //Bugs spawn at y=25
-      spawnRate = 2000, //Bugs spawn every 2000ms
+  let spawnLine = 0, //Bugs spawn at y=0
+      spawnRate = 1500, //Bugs spawn every 1500ms
       spawnRateDescent = 0.60, //How fast the bugs will approach
       lastBug = -1; //Last bug spawned
       bugArray = []; //Holds all the Bugs
@@ -25,19 +25,19 @@ animate(); //Begin animation
 function bugSpawn() {
   let bugType; //Select a random bug to spawned
   if(Math.random() < 0.33) {
-    t = sadImage;
+    r = sadImage;
   } else if(Math.random() < 0.66) {
-    t = happyImage;
+    r = happyImage;
   } else {
-    t = mediumFace;
+    r = mediumFace;
   }
 
   //Create the new bug
   var object = {
         // set this objects type
-        type: t,
+        type: r,
         // set x randomly but at least 15px off the canvas edges
-        x: Math.random() * (canvas.width - 30) + 25,
+        x: Math.random() * (canvas.width - 30) + 15,
         // set y to start on the line where objects are spawned
         y: spawnLine,
     }
@@ -56,25 +56,21 @@ function animate() {
     bugSpawn();
     spawnRate*=.99;
   }
-
+}
   //Request another animation frame
   requestAnimationFrame(animate);
 
-  //Clear the canvas to all bugs can be redrawn in new spots
-  //ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+  var imageDraw = ctx.drawImage(r, object.x, object.y, 30, 30);
     //Move each bug down the canvas
     for (var i = 0; i < bugArray.length; i++) {
       var object = bugArray[i];
       object.y += spawnRateDescent;
       ctx.beginPath();
-      ctx.drawImage(t, object.x, object.y, 30, 30);
+      imageDraw;
       ctx.closePath();
-      //ctx.rect(object.x, object.y, 30, 30);
       ctx.fillStyle = object.type;
-      //ctx.fill();
     }
-}
+
 
 
 
@@ -85,7 +81,7 @@ function bugSquash(){
   clickCount++;
 
   if(clickCount == 3){
-    clickBox.classList.add('blue');
+    imageDraw.classList.add('blue')
   }
   else {
     console.log('return');
