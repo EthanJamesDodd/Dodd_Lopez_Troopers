@@ -37,7 +37,7 @@ function bugSpawn() {
         // set this objects type
         type: t,
         // set x randomly but at least 15px off the canvas edges
-        x: Math.random() * (canvas.width - 30) + 15,
+        x: Math.random() * (canvas.width - 30) + 25,
         // set y to start on the line where objects are spawned
         y: spawnLine,
     }
@@ -61,7 +61,7 @@ function animate() {
   requestAnimationFrame(animate);
 
   //Clear the canvas to all bugs can be redrawn in new spots
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     //Move each bug down the canvas
     for (var i = 0; i < bugArray.length; i++) {
