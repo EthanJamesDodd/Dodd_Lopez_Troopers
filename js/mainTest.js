@@ -68,6 +68,7 @@ function animate() {
       var object = bugArray[i];
       object.y += spawnRateDescent;
       ctx.beginPath();
+      //var rectBox = ctx.rect(object.x, object.y, 30, 30)
       ctx.drawImage(t, object.x, object.y, 30, 30);
       ctx.closePath();
       //ctx.rect(object.x, object.y, 30, 30);
