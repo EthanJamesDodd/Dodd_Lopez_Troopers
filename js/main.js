@@ -2,41 +2,36 @@
 //Variable Stack
  var canvas = document.getElementById("canvas");
  var ctx = canvas.getContext("2d");
- let clickCount = 0,
-     score = 0,
-     clickBox = document.querySelector('#testBox');
+let spawnLineY = 0, //Bugs spawn at y=0
+    spawnRate = 2500, //Bugs spawn ever 2000ms
+    spawnRateOfDescent = 0.50, //How fast the bugs will descend
+    lastSpawn = -1, //Last bug spawned
+    objects = [], //Holds all spawned objects
+    startTime = Date.now(); //Star time, to calculate total time
 
-var spawnLineY = 0; //Bugs spawn at y=0
-var spawnRate = 1500; //Bugs spawn ever 1500ms
-var spawnRateOfDescent = 0.50; //How fast the bugs will descend
-var lastSpawn = -1; //Last bug spawned
-var objects = []; //Holds all spawned objects
-var startTime = Date.now(); //Star time, to calculate total time
-
-var bugOne = new Image();
+const bugOne = new Image();
 bugOne.src = "assets/bug1.svg";
 
-var bugTwo = new Image();
+const bugTwo = new Image();
 bugTwo.src = "assets/bug2.svg";
 
-var bugThree = new Image();
+const bugThree = new Image();
 bugThree.src = "assets/brainBug.svg";
 
 // Our images array
-var bugArray = [bugOne, bugTwo, bugThree];
-
-// start animating
-window.onload=function(){
-animate();
-}
+let bugArray = [bugOne, bugTwo, bugThree];
 
 console.log(bugArray)
+
+animate();
+
+console.log(bugArray);
 
 function bugSpawn() {
     // create the new object
     var object = {
         // set x randomly but at least 15px off the canvas edges
-        x: Math.random() * (canvas.width - 30) + 15,
+        x: Math.random() * (canvas.width - 30),
         // set y to start on the line where objects are spawned
         y: spawnLineY,
         // give random image
@@ -71,20 +66,13 @@ function animate() {
         object.y += spawnRateOfDescent;
         ctx.drawImage(object.image, object.x, object.y, 40, 40);
     }
-
 }
 
 
-function bugSquash(){
-  clickCount++;
+function bugSquash() {
+  console.log('hello');
+}
 
-  if(clickCount == 3){
-    clickBox.classList.add('blue');
-  }
-  else {
-    console.log('return');
-  }
-};
+bugArray[1].addEventListener('click', bugSquash);
 
-clickBox.addEventListener('click', bugSquash);
 })();
