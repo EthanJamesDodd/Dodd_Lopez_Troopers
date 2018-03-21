@@ -15,9 +15,9 @@
       lastBug = -1; //Last bug spawned
       bugArray = []; //Holds all the Bugs
       startTime = Date.now(), //Start time, to calculate total time
-      sadImage = document.querySelector('#sadFace'),
-      happyImage = document.querySelector('#happyFace'),
-      mediumImage = document.querySelector('#mediumFace');
+      bugOne = document.querySelector('#firstBug'),
+      bugTwo = document.querySelector('#secondBug'),
+      bugThree = document.querySelector('#thirdBug');
 
 
 animate(); //Begin animation
@@ -55,7 +55,7 @@ function animate() {
     for (var i = 0; i < bugArray.length; i++) {
       var object = bugArray[i];
       object.y += spawnRateDescent;
-      ctx.drawImage(sadImage, object.x, object.y, 40, 40);
+      ctx.drawImage(bugOne, object.x, object.y, 40, 40);
     }
 }
 
