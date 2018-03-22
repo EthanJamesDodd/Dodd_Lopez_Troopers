@@ -2,14 +2,6 @@
   background-color: blue !important;
 }
 
-
-
-#testBox{
-  width: 500px;
-  height: 500px;
-  background-color: red;
-}
-
 canvas{
   display: block;
   border: 3px #333 solid;
