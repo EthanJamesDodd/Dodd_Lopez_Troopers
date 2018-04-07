@@ -14,3 +14,32 @@ canvas{
 img{
   display: none;
 }
+/*timer area starts*/
+#countdown
+{
+	font-size: 30px;
+	position: relative;
+	left: 30px;
+  top:15px;
+	color:white;
+	font-family: 'Orbitron', sans-serif;
+}
+
+#countdownbox
+{
+		background:url("../assets/timerButton.svg")no-repeat;
+		background-size: contain;
+		height:70px;
+		width:130px;
+    position:absolute;
+}
+#timeUp
+{
+	font-size:30px;
+	color:red;
+	margin-left:130px;
+	margin-top:30px;
+	font-family: 'Orbitron', sans-serif;
+	text-transform: uppercase;
+}
+/*timer area ends*/
