@@ -64,15 +64,18 @@ function animate() {
     for (var i = 0; i < objects.length; i++) {
         var object = objects[i];
         object.y += spawnRateOfDescent;
+        ctx.beginPath();
+        ctx.arc(object.x, object.y,10, 0, 2 * Math.PI, false);
         ctx.drawImage(object.image, object.x, object.y, 40, 40);
+        ctx.fill();
+        ctx.addHitRegion({id: `Bug${i}` });
     }
 }
 
-
-function bugSquash() {
-  console.log('hello');
-}
-
-bugArray[1].addEventListener('click', bugSquash);
+canvas.addEventListener('click', function(event) {
+  if(event.region) {
+    console.log('it works?');
+  }
+})
 
 })();
