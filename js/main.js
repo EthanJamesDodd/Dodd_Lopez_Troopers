@@ -18,14 +18,13 @@ bugTwo.src = "assets/bug2.svg";
 const bugThree = new Image();
 bugThree.src = "assets/brainBug.svg";
 
+const splatImage = new Image();
+splatImage.src = "assets/redSplat.png";
+
 // Our images array
 let bugArray = [bugOne, bugTwo, bugThree];
 
-console.log(bugArray)
-
 animate();
-
-console.log(bugArray);
 
 function bugSpawn() {
     // create the new object
@@ -50,11 +49,8 @@ function animate() {
     if (time > (lastSpawn + spawnRate)) {
         lastSpawn = time;
         bugSpawn();
-        spawnRate*=.99;
+        spawnRate*=.98;
     }
-
-    // request another animation frame
-    requestAnimationFrame(animate);
 
     // clear the canvas so all objects can be
     // redrawn in new positions
@@ -65,17 +61,27 @@ function animate() {
         var object = objects[i];
         object.y += spawnRateOfDescent;
         ctx.beginPath();
-        ctx.arc(object.x, object.y,10, 0, 2 * Math.PI, false);
-        ctx.drawImage(object.image, object.x, object.y, 40, 40);
+        ctx.rect(object.x, object.y, 50, 50);
+        ctx.drawImage(object.image, object.x, object.y, 50, 50);
+        ctx.fillStyle = 'rgba(200, 0, 0, 0)';
         ctx.fill();
         ctx.addHitRegion({id: `Bug${i}` });
     }
+    // request another animation frame
+    requestAnimationFrame(animate);
 }
 
-canvas.addEventListener('click', function(event) {
+function onClick(){
   if(event.region) {
-    console.log('it works?');
-  }
-})
+       console.log('it works?');
+       for (var i = 0; i < objects.length; i++) {
+           var object = objects[i];
+           object.y += spawnRateOfDescent;
+           ctx.drawImage(splatImage, object.x, object.y, 200, 200);
+       }
+     }
+}
+
+canvas.addEventListener('click', onClick);
 
 })();

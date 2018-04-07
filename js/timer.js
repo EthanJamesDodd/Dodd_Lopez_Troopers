@@ -2,7 +2,7 @@
 
 console.log("Linked up");
 var countdownTimer = setInterval('secoundsPassed()', 1000);
-var secounds = 60;
+var secounds = 120;
 
     function secoundsPassed(){
 var minutes = Math.round ((secounds - 30) / 60);
