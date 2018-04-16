@@ -25,7 +25,7 @@ img{
 	font-family: 'Orbitron', sans-serif;
 }
 
-#countdownbox
+.countdownbox
 {
 		background:url("../assets/timerButton.svg")no-repeat;
 		background-size: contain;
