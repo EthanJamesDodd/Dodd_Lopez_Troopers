@@ -12,6 +12,9 @@ let spawnLineY = 0, //Bugs spawn at y=0
     playerLives = [1, 2, 3],
     playerImage = document.querySelector('#splatImage'),
     showScore = document.querySelector('.totalScore'),
+    scoreProgress = document.querySelector('.scoreProgress'),
+    resetScreen = document.querySelector('.reset-screen'),
+    resetButton = document.querySelector('.reset'),
     playState = true,
     clickCount = 0,
     finalScore = 0;
@@ -50,14 +53,15 @@ function bugSpawn() { //Function aiding in where bugs will be spawned, and what 
 function animate() { //Begin Animate
 
     var time = Date.now();// get the elapsed time
-    showScore.textContent = finalScore
+    showScore.textContent = finalScore;
+    scoreProgress.textContent = finalScore;
 
 
     // see if its time to spawn a new object
     if (time > (lastSpawn + spawnRate)) {
         lastSpawn = time;
         bugSpawn();
-        //spawnRate*=.99;
+        spawnRate*=.99;
     }
 
     // clear the canvas so all objects can be
@@ -102,11 +106,20 @@ function loseGame() { //Lose game function, aka lose game screen
   playState = false;
   objects.splice(0);
   console.log(objects);
+  resetScreen.classList.add('show-reset-screen');
+
+}
+
+function resetGame() {
+  let playerLives = [1, 2, 3];
+  requestAnimationFrame(animate);
+  resetScreen.classList.remove('show-reset-screen');
+
+
 }
 
 function onClick() { //Onclick, squash bugs!
   if(event.region) {//Check if it is in hit region
-       clickCount++;
 
        objects.forEach((object, index) => {
          if(event.region == `Bug${index}`) { //If the area clicked is the same hit region. do this
@@ -123,6 +136,8 @@ function onClick() { //Onclick, squash bugs!
 
 
 
+
 canvas.addEventListener('click', onClick);
+resetButton.addEventListener('click', resetGame);
 
 })();

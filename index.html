@@ -11,18 +11,19 @@
 </head>
 <body>
 
-  <div class="countdownbox">
-      <div id="countdown" class="timer"></div>
-  </div>
-  <div id="timeUp"></div>
-
-  <div>
-    <p class="totalScore"></p>
-  </div>
-
-
-
 <canvas id="canvas" width="933" height="735"></canvas>
+
+<div class="countdownbox">
+    <div id="countdown" class="timer"></div>
+</div>
+<div id="timeUp"></div>
+
+<div class="reset-screen">
+  <p class="totalScore"></p>
+  <button class="reset">PLAY AGAIN</button>
+</div>
+<p class="scoreProgress"></p>
+
   <img src="assets/bug1.svg" id="firstBug">
   <img src="assets/bug2.svg" id="secondBug">
   <img src="assets/brainBug.svg" id="thirdBug">
@@ -31,6 +32,7 @@
 
 
 <script src="js/main.js"></script>
+<script src="js/timer.js"></script>
 
 </body>
 </html>
