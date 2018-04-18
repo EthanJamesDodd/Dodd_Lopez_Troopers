@@ -1,22 +1,42 @@
-.blue{
-  background-color: blue !important;
+body {
+  text-align: center;
+  user-select: none;
+  font-size: 16px;
+  color: white;
+  background-color: black;
 }
 
-canvas{
+canvas {
   display: block;
   border: 3px #333 solid;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 20px;
   background-image: url("../assets/bkg2.jpg");
   cursor: crosshair;
+  position: relative;
 }
 
-img{
+img {
   display: none;
 }
+
+.reset-screen {
+  position: absolute;
+  left: 650px;
+  top: 9px;
+  width: 600px;
+  height: 600px;
+  background-color: black;
+  z-index: 2;
+  display: none; opacity: 0;
+}
+
+.show-reset-screen {
+  display: block; opacity: 1;
+}
+
+
 /*timer area starts*/
-#countdown
-{
+#countdown {
 	font-size: 30px;
 	position: relative;
 	left: 30px;
@@ -25,16 +45,14 @@ img{
 	font-family: 'Orbitron', sans-serif;
 }
 
-.countdownbox
-{
+.countdownbox {
 		background:url("../assets/timerButton.svg")no-repeat;
 		background-size: contain;
 		height:70px;
 		width:130px;
     position:absolute;
 }
-#timeUp
-{
+#timeUp {
 	font-size:30px;
 	color:red;
 	margin-left:130px;
