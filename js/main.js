@@ -82,6 +82,7 @@ function animate() { //Begin Animate
 
         playerLives.splice(i, 1);
         i++;
+        console.log('lost a life');
       }
       if(playerLives.length == 0){ //Check when lives hit 0. If they do, lose the game
         loseGame();
@@ -105,13 +106,12 @@ function loseGame() { //Lose game function, aka lose game screen
   console.log('you lost')
   playState = false;
   objects.splice(0);
-  console.log(objects);
   resetScreen.classList.add('show-reset-screen');
-
+  let playerLives = [1, 2, 3];
 }
 
 function resetGame() {
-  let playerLives = [1, 2, 3];
+  location.reload();
   requestAnimationFrame(animate);
   resetScreen.classList.remove('show-reset-screen');
 
@@ -129,13 +129,52 @@ function onClick() { //Onclick, squash bugs!
            finalScore += 3;
          }
          console.log(finalScore);
+         squish()
        })
      }
 }
 
+function squish() {
+  let squishSound = document.createElement('audio');
+  squishSound.src = 'audio/squish.mp3';
+  document.body.appendChild(squishSound);
+
+  squishSound.addEventListener('ended', () =>{
+    document.body.removeChild(squishSound);
+  })
+
+  squishSound.play();
+}
 
 
+var timeoutHandle;
+function countdown(minutes) {
+    var seconds = 60;
+    var mins = minutes
+    function tick() {
+        var counter = document.getElementById("timer");
+        var current_minutes = mins-1
+        seconds--;
+        document.getElementById ('countdown').innerHTML =
+        current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds);
+        if( seconds > 0 ) {
+            timeoutHandle=setTimeout(tick, 1000);
+        } else {
 
+            if(mins > 1){
+
+               // countdown(mins-1);   never reach “00″ issue solved:Contributed by Victor Streithorst
+               setTimeout(function () { countdown(mins - 1); }, 1000);
+
+            } else {
+              loseGame();
+            }
+        }
+    }
+    tick();
+}
+
+countdown(1);
 
 canvas.addEventListener('click', onClick);
 resetButton.addEventListener('click', resetGame);
