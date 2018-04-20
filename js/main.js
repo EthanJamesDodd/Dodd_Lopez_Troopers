@@ -114,8 +114,6 @@ function resetGame() {
   location.reload();
   requestAnimationFrame(animate);
   resetScreen.classList.remove('show-reset-screen');
-
-
 }
 
 function onClick() { //Onclick, squash bugs!

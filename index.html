@@ -11,12 +11,17 @@
 </head>
 <body>
   <div class="container">
-
-  <div class="countdownbox">
+<div class="infoArea">
+    <div class="countdownbox">
       <div id="countdown" class="timer"></div>
-  </div>
-  <div id="timeUp"></div>
+      <div class="scoreArea">
+            <h2 class="scoreText"> SCORE:</h2>
+             <p class="scoreProgress"></p>
+      </div>
 
+    </div>
+   <div id="timeUp"></div>
+</div>
 <canvas id="canvas" width="700" height="700"></canvas>
 
 
@@ -24,13 +29,19 @@
 <div class="reset-screen">
   <p class="totalScore"></p>
   <button class="reset">PLAY AGAIN</button>
+
+  <p>Nice shooting soldier!</p>
+    <img class="sargent" src="assets/sargent.png">
+
+
+
 </div>
-<p class="scoreProgress"></p>
+<!--<p class="scoreProgress"></p>-->
 
   <img src="assets/bug1.svg" id="firstBug">
   <img src="assets/bug2.svg" id="secondBug">
   <img src="assets/brainBug.svg" id="thirdBug">
-  <img src="assets/redSplat.png" id="splatImage">
+  <img src="assets/life.png" id="splatImage">
 
 
 </div>
