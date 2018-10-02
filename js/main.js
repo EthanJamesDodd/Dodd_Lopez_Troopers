@@ -75,7 +75,7 @@ function animate() { //Begin Animate
       ctx.drawImage(object.image, object.x, object.y, 50, 50);
       ctx.fillStyle = 'rgba(0, 0, 0, 0)';
       ctx.fill();
-      ctx.addHitRegion({id: `Bug${index}` });
+      // ctx.addHitRegion({id: `Bug${index}` });
 
       let i = 0;
       if(objects[index].y == canvas.height){ //Check if bugs hit bottom, if they do remove a life
